@@ -1,0 +1,38 @@
+type: table
+files:
+  - name: main.py
+    visible: true
+    text: |+
+      #  You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10358#comment
+status: Solved
+record: -1
+rows:
+  - aa
+  - aba
+  - abbba
+  - abbbbba
+columns:
+  - ab+a
+  - ab*a
+  - "ab{0,3}a"
+  - "ab{3,}a"
+selected:
+  - - false
+    - false
+    - false
+    - false
+  - - false
+    - false
+    - false
+    - false
+  - - false
+    - false
+    - false
+    - false
+  - - false
+    - false
+    - false
+    - false

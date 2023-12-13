@@ -1,0 +1,26 @@
+type: matching
+captions:
+  - <code>\?</code>
+  - <code>.</code>
+  - <code>\.</code>
+  - <code>?</code>
+options:
+  - It's just a question mark.
+  - It's just a dot.
+  - It's a symbol that indicates that a previous character might be absent.
+  - It's any symbol.
+files:
+  - name: main.py
+    visible: true
+    text: |+
+      #  You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/15262#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3

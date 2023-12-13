@@ -1,0 +1,16 @@
+type: code
+files:
+  - name: main.py
+    visible: true
+    highlight_level: NONE
+    text: |-
+      def merge_lists(list_one, list_two):
+          ...
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10068#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Mon, 11 Dec 2023 18:31:08 UTC"
+record: -1
+submission_language: python3

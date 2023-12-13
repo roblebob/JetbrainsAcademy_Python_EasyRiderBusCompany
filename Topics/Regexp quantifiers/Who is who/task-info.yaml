@@ -1,0 +1,26 @@
+type: matching
+captions:
+  - +
+  - '*'
+  - "{,1}"
+  - "{1}"
+options:
+  - at least 1 occurrence of the character
+  - 0 or more occurrences of the character
+  - 1 occurrence of the character
+  - no more than 1 occurrence of the character
+files:
+  - name: main.py
+    visible: true
+    text: |+
+      #  You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10356#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3

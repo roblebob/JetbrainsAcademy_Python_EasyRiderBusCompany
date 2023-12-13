@@ -1,0 +1,12 @@
+content:
+  - Indexes
+  - Identity testing
+  - Operations with list
+  - Tuple
+  - Conversion to boolean
+  - Slicing
+  - Regexps in Python
+  - Escaping in regexps
+  - Regexp sets and ranges
+  - Shorthands
+  - Regexp quantifiers
