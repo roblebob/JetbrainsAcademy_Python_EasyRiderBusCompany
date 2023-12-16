@@ -1,0 +1,18 @@
+type: code
+files:
+  - name: main.py
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10369#comment
+status: Solved
+feedback:
+  message: |-
+    <html>[+] Test #1. OK
+    [+] Test #2. OK
+    [+] Test #3. OK
+    [+] Test #4. OK
+
+    4 of 4 test(s) passed.</html>
+  time: "Sat, 16 Dec 2023 15:56:34 UTC"
+record: -1
+submission_language: python3

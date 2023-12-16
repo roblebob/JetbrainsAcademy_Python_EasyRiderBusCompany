@@ -10,3 +10,7 @@ content:
   - Regexp sets and ranges
   - Shorthands
   - Regexp quantifiers
+  - Groups and alternations
+  - Preconditions and postconditions
+  - Tokenization
+  - Regexps in programs

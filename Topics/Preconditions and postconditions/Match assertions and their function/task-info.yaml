@@ -1,0 +1,26 @@
+type: matching
+captions:
+  - Negative lookahead <code>(?!pattern)</code>
+  - Positive lookahead <code>(?=pattern)</code>
+  - Positive lookbehind <code>(?&lt;=pattern)</code>
+  - Negative lookbehind <code> (?&lt;!pattern) </code>
+options:
+  - If a pattern precede the expression
+  - If a pattern is not followed by the expression
+  - If a pattern does not precede the expression
+  - If a pattern is followed by the  expression
+files:
+  - name: main.py
+    visible: true
+    text: |+
+      #  You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14252#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3

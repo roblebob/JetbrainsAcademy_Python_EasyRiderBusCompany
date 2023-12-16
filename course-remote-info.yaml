@@ -4,14 +4,14 @@ hyperskill_project:
   is_template_based: false
   use_ide: true
   environment: unittest
-update_date: "Wed, 13 Dec 2023 14:24:41 UTC"
+update_date: "Sat, 16 Dec 2023 13:09:04 UTC"
 stages:
   - id: 680
     step: 10888
     is_completed: true
   - id: 681
     step: 10889
-    is_completed: false
+    is_completed: true
   - id: 682
     step: 10890
     is_completed: false
@@ -135,14 +135,14 @@ topics:
       theory_id: 14243
     - title: Preconditions and postconditions
       theory_id: 14251
-    - title: Intro to computational thinking
-      theory_id: 8742
-    - title: Components of computational thinking
-      theory_id: 8745
     - title: Natural language processing
       theory_id: 9157
     - title: Regexps in programs
       theory_id: 14611
+    - title: Intro to computational thinking
+      theory_id: 8742
+    - title: Components of computational thinking
+      theory_id: 8745
     - title: Indexes
       theory_id: 6189
     - title: Identity testing
@@ -182,7 +182,7 @@ topics:
       theory_id: 16547
     - title: Algorithms in Python
       theory_id: 7316
-    - title: List comprehension
-      theory_id: 6315
     - title: Functional decomposition
       theory_id: 9571
+    - title: List comprehension
+      theory_id: 6315
