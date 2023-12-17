@@ -24,13 +24,36 @@ data_list = json.loads(json_as_str)
 #
 
 
-counter = dict()
+# counter = dict()
+#
+# for data in data_list:
+#     if data['bus_id'] in counter:
+#         counter[data['bus_id']].add(data['stop_name'])
+#     else:
+#         counter[data['bus_id']] = {data['stop_name']}
+#
+
+
+d_stop_types = dict()
 
 for data in data_list:
-    if data['bus_id'] in counter:
-        counter[data['bus_id']].add(data['stop_name'])
+    if data['bus_id'] in d_stop_types:
+        d_stop_types[data['bus_id']].append(data['stop_type'])
     else:
-        counter[data['bus_id']] = {data['stop_name']}
+        # check previous added bus lines for valid account of stop_types
+        for _, l in d_stop_types.items():
+            if l.count('S') != 1 or l.count('F') != 1:
+
+
+
+        d_stop_types[data['bus_id']] = [data['stop_type']]
+
+
+
+
+
+
+
 
 
 # result = f"""Type and required field validation: {sum(error_counter.values())} errors
