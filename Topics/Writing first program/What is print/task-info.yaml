@@ -1,0 +1,22 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: <strong>Command</strong> that makes computer performs a specific task in the
+      command-line interface.
+  - text: "<strong>Statement</strong> that performs actions, but doesn't return anything,\
+    \ and doesn't require parenteses."
+  - text: <strong>Expression</strong> that consist only of values (such as 2 or 'hello')
+      and operators (such as + or ==).
+  - text: "<strong>Function</strong> that takes arguments in parenteses, performs a\
+    \ specific task for you, and return results."
+files:
+  - name: main.py
+    visible: true
+    text: |+
+      #  You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6556#comment
+status: Solved
+record: -1
+local_check: false

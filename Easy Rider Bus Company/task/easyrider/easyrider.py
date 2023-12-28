@@ -1,12 +1,80 @@
 # Write your code here
 import json
-import re
 
-pattern = re.compile(r'^\b[A-Z].*\b(Road|Avenue|Boulevard|Street)\b$')
 
-json_as_str = input()
-# json_as_str = r'[{"bus_id" : 128, "stop_id" : 1, "stop_name" : "Prospekt Avenue", "next_stop" : 3, "stop_type" : "S", "a_time" : "08:12"}, {"bus_id" : 128, "stop_id" : 3, "stop_name" : "Elm Street", "next_stop" : 5, "stop_type" : "", "a_time" : "08:19"}, {"bus_id" : 128, "stop_id" : 5, "stop_name" : "Fifth Avenue", "next_stop" : 7, "stop_type" : "O", "a_time" : "08:25"}, {"bus_id" : 128, "stop_id" : 7, "stop_name" : "Sesame Street", "next_stop" : 0, "stop_type" : "F", "a_time" : "08:37"}, {"bus_id" : 256, "stop_id" : 2, "stop_name" : "Pilotow Street", "next_stop" : 3, "stop_type" : "S", "a_time" : "09:20"}, {"bus_id" : 256, "stop_id" : 3, "stop_name" : "Elm Street", "next_stop" : 6, "stop_type" : "", "a_time" : "09:45"}, {"bus_id" : 256, "stop_id" : 6, "stop_name" : "Sunset Boulevard", "next_stop" : 7, "stop_type" : "", "a_time" : "09:59"}, {"bus_id" : 256, "stop_id" : 7, "stop_name" : "Sesame Street", "next_stop" : 0, "stop_type" : "F", "a_time" : "10:12"}, {"bus_id" : 512, "stop_id" : 4, "stop_name" : "Bourbon Street", "next_stop" : 6, "stop_type" : "S", "a_time" : "08:13"}, {"bus_id" : 512, "stop_id" : 6, "stop_name" : "Sunset Boulevard", "next_stop" : 0, "stop_type" : "F", "a_time" : "08:16"}]'
-data_list = json.loads(json_as_str)
+class Data:
+    def __init__(self, raw_str):
+        self.raw = json.loads(raw_str)
+        self.core = dict()
+
+        # integrate
+        for _data in self.raw:
+            _id, _type, _name = _data["bus_id"], _data["stop_type"], _data["stop_name"]
+
+            if _id not in self.core:
+                self.core[_id] = {"Start stops": [], "Transfer stops": set(), "All stops": set(), "Finish stops": []}
+
+            if _type == "S":
+                self.core[_id]["Start stops"].append(_name)
+            elif _type == "F":
+                self.core[_id]["Finish stops"].append(_name)
+
+            self.core[_id]["All stops"].update({_name})
+
+        # check
+        for bus_id, stops in self.core.items():
+            if len(stops["Start stops"]) != 1 or len(stops["Finish stops"]) != 1:
+                print("There is no start or end stop for the line: {}.".format(bus_id))
+                return
+
+        # calculate Transfer stops
+        for bus_id in self.core.keys():
+
+            other_bus_ids = list(self.core.keys())
+            other_bus_ids.remove(bus_id)
+
+            for other_bus_id in other_bus_ids:
+
+                self.core[bus_id]["Transfer stops"].update(self.core[bus_id]["All stops"] & self.core[other_bus_id]["All stops"])
+
+
+
+        #
+        feedback = {"Start stops": set(), "Transfer stops": set(), "Finish stops": set()}
+        for bus_id in self.core.keys():
+            for key in feedback.keys():
+                feedback[key].update(set(self.core[bus_id][key]))
+
+
+        # print result
+        for key, val in feedback.items():
+            print(f"{key}: {len(val)} {sorted(list(val))}")
+
+
+
+
+data = Data(input())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# pattern = re.compile(r'^\b[A-Z].*\b(Road|Avenue|Boulevard|Street)\b$')
+
 # data_type_checks = {
 #     'bus_id': lambda x: isinstance(x, int) and x in [128, 256, 512],
 #     'stop_id': lambda x: isinstance(x, int),
@@ -32,36 +100,3 @@ data_list = json.loads(json_as_str)
 #     else:
 #         counter[data['bus_id']] = {data['stop_name']}
 #
-
-
-d_stop_types = dict()
-
-for data in data_list:
-    if data['bus_id'] in d_stop_types:
-        d_stop_types[data['bus_id']].append(data['stop_type'])
-    else:
-        # check previous added bus lines for valid account of stop_types
-        for _, l in d_stop_types.items():
-            if l.count('S') != 1 or l.count('F') != 1:
-
-
-
-        d_stop_types[data['bus_id']] = [data['stop_type']]
-
-
-
-
-
-
-
-
-
-# result = f"""Type and required field validation: {sum(error_counter.values())} errors
-# stop_name: {error_counter['stop_name']}
-# stop_type: {error_counter['stop_type']}
-# a_time: {error_counter['a_time']}
-# """
-
-print("Line names and number of stops:")
-for key, value in counter.items():
-    print(f"bus_id: {key}, stops: {len(value)}")

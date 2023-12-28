@@ -1,0 +1,27 @@
+type: matching
+custom_name: What's the error?
+captions:
+  - prnt("This is a test string.")
+  - PRINT("This is a test string.")
+  - print("THIS IS A TEST STRING.)
+  - print("This is a test string."
+options:
+  - the function name is in the wrong case
+  - the function is called by the wrong name
+  - missing parentheses
+  - missing quote
+files:
+  - name: main.py
+    visible: true
+    text: |+
+      #  You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/14898#comment
+status: Solved
+record: -1
+ordering:
+  - 0
+  - 1
+  - 2
+  - 3

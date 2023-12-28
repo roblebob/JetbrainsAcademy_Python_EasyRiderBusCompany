@@ -4,7 +4,7 @@ hyperskill_project:
   is_template_based: false
   use_ide: true
   environment: unittest
-update_date: "Sun, 17 Dec 2023 15:39:38 UTC"
+update_date: "Thu, 28 Dec 2023 18:00:52 UTC"
 stages:
   - id: 680
     step: 10888
@@ -17,7 +17,7 @@ stages:
     is_completed: true
   - id: 683
     step: 10891
-    is_completed: false
+    is_completed: true
   - id: 684
     step: 10892
     is_completed: false
@@ -54,14 +54,14 @@ topics:
       theory_id: 5926
     - title: While loop
       theory_id: 5940
-    - title: Documentation
-      theory_id: 12069
     - title: Files
       theory_id: 13025
-    - title: File types
-      theory_id: 13017
+    - title: Documentation
+      theory_id: 12069
     - title: JSON
       theory_id: 6854
+    - title: File types
+      theory_id: 13017
     - title: How to read the documentation
       theory_id: 12125
     - title: Introduction to Linux
@@ -101,10 +101,6 @@ topics:
     - title: Type casting
       theory_id: 6224
   1:
-    - title: Introduction to NLTK
-      theory_id: 31188
-    - title: Tokenization
-      theory_id: 10363
     - title: Multi-line programs
       theory_id: 5233
     - title: Installing packages with pip
@@ -137,6 +133,10 @@ topics:
       theory_id: 14251
     - title: Natural language processing
       theory_id: 9157
+    - title: Introduction to NLTK
+      theory_id: 31188
+    - title: Tokenization
+      theory_id: 10363
     - title: Regexps in programs
       theory_id: 14611
     - title: Intro to computational thinking

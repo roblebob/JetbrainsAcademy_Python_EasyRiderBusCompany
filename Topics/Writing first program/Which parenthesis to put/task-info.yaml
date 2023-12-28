@@ -1,0 +1,12 @@
+type: unsupported
+custom_name: Which parenthesis to put?
+files:
+  - name: main.py
+    visible: true
+    text: |+
+      #  This is a fill blanks task. You can use this editor as a playground
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/34847#comment
+status: Solved
+record: -1
