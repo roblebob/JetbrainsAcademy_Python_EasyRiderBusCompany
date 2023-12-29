@@ -4,53 +4,77 @@ import json
 
 class Data:
     def __init__(self, raw_str):
-        self.raw = json.loads(raw_str)
-        self.core = dict()
+        self.core = json.loads(raw_str)
+        self.validate_arrivial_times()
 
-        # integrate
-        for _data in self.raw:
+    def validate_arrivial_times(self):
+        result = dict()
+
+        feedback = []
+
+        for _data in self.core:
+            _id = _data["bus_id"]
+            if _id not in result:
+                result[_id] = [_data]
+            else:
+                result[_id].append(_data)
+
+        for bus_id in result:
+            for i, stop in enumerate(result[bus_id]):
+                if 0 < i < len(result[bus_id]):
+                    prev = result[bus_id][i - 1]
+                    if stop["a_time"] <= prev["a_time"]:
+                        feedback.append(stop)
+                        break
+
+        print("Arrival time test:")
+        if len(feedback) == 0:
+            print("OK")
+        else:
+            for entry in feedback:
+                _id, _name = entry["bus_id"], entry["stop_name"]
+                print(f"bus_id line {_id}: wrong time on station {_name}")
+
+    def validate_stops(self):
+        result = dict()
+        for _data in self.core:
             _id, _type, _name = _data["bus_id"], _data["stop_type"], _data["stop_name"]
 
-            if _id not in self.core:
-                self.core[_id] = {"Start stops": [], "Transfer stops": set(), "All stops": set(), "Finish stops": []}
+            if _id not in result:
+                result[_id] = {"Start stops": [], "Transfer stops": set(), "All stops": set(), "Finish stops": []}
 
             if _type == "S":
-                self.core[_id]["Start stops"].append(_name)
+                result[_id]["Start stops"].append(_name)
             elif _type == "F":
-                self.core[_id]["Finish stops"].append(_name)
+                result[_id]["Finish stops"].append(_name)
 
-            self.core[_id]["All stops"].update({_name})
+            result[_id]["All stops"].update({_name})
 
         # check
-        for bus_id, stops in self.core.items():
+        for bus_id, stops in result.items():
             if len(stops["Start stops"]) != 1 or len(stops["Finish stops"]) != 1:
                 print("There is no start or end stop for the line: {}.".format(bus_id))
                 return
 
         # calculate Transfer stops
-        for bus_id in self.core.keys():
+        for bus_id in result.keys():
 
-            other_bus_ids = list(self.core.keys())
+            other_bus_ids = list(result.keys())
             other_bus_ids.remove(bus_id)
 
             for other_bus_id in other_bus_ids:
-
-                self.core[bus_id]["Transfer stops"].update(self.core[bus_id]["All stops"] & self.core[other_bus_id]["All stops"])
-
-
+                result[bus_id]["Transfer stops"].update(
+                    result[bus_id]["All stops"] & result[other_bus_id]["All stops"])
 
         #
         feedback = {"Start stops": set(), "Transfer stops": set(), "Finish stops": set()}
-        for bus_id in self.core.keys():
+        for bus_id in result.keys():
             for key in feedback.keys():
-                feedback[key].update(set(self.core[bus_id][key]))
-
+                feedback[key].update(set(result[bus_id][key]))
 
         # print result
         for key, val in feedback.items():
             print(f"{key}: {len(val)} {sorted(list(val))}")
-
-
 
 
 data = Data(input())
